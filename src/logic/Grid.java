@@ -5,7 +5,6 @@ import java.util.Random;
 
 public class Grid {
     public static final int SIZE = 10;
-    public static final Color COLOR = new Color(0.1, 0.1, 0.1, 1);
     private final int cols;
     private final int rows;
     private Snake snake;
@@ -21,10 +20,8 @@ public class Grid {
     public Point wrap(Point point) {
         int x = point.getX();
         int y = point.getY();
-        if (x >= rows) x = 0;
-        if (y >= cols) y = 0;
-        if (x < 0) x = rows - 1;
-        if (y < 0) y = cols - 1;
+        if (x >= rows || x < 0) Snake.safe = false;
+        if (y >= cols || y < 0) Snake.safe = false;
         return new Point(x, y);
     }
 

@@ -1,9 +1,8 @@
 package logic;
 
-import javafx.scene.paint.Color;
 
 public class Food {
-    public static final Color COLOR = Color.DEEPPINK;
+
     private Point point;
 
     Food(Point point) {

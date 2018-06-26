@@ -2,7 +2,6 @@ package gui;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import logic.Food;
 import logic.Grid;
 import logic.Point;
 import logic.Snake;
@@ -10,16 +9,21 @@ import logic.Snake;
 import static logic.Grid.SIZE;
 
 public class Painter {
+    private static final Color COLOR = Color.FIREBRICK;
+    private static final Color DEAD = Color.RED;
+    private static final Color FIELD = new Color(0.1, 0.1, 0.1, 1);
+    private static final Color FOOD = Color.DEEPPINK;
+
     public static void paint(Grid grid, GraphicsContext gc) {
-        gc.setFill(Grid.COLOR);
+        gc.setFill(FIELD);
         gc.fillRect(0, 0, grid.getWidth(), grid.getHeight());
-        gc.setFill(Food.COLOR);
+        gc.setFill(FOOD);
         paintPoint(grid.getFood().getPoint(), gc);
         Snake snake = grid.getSnake();
-        gc.setFill(Snake.COLOR);
+        gc.setFill(COLOR);
         snake.getPoints().forEach(point -> paintPoint(point, gc));
         if (!snake.isSafe()) {
-            gc.setFill(Snake.DEAD);
+            gc.setFill(DEAD);
             paintPoint(snake.getHead(), gc);
         }
 

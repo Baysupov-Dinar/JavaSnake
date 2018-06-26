@@ -1,15 +1,13 @@
 package logic;
 
-import javafx.scene.paint.Color;
+
 import java.util.LinkedList;
 import java.util.List;
 
 public class Snake {
-    public static final Color COLOR = Color.FIREBRICK;
-    public static final Color DEAD = Color.RED;
     private Grid grid;
     private int length;
-    private boolean safe;
+    public static boolean safe;
     private List<Point> points;
     private Point head;
     private int xVelocity;
@@ -48,7 +46,7 @@ public class Snake {
     }
 
     public boolean isSafe() {
-        return safe || length == 1;
+        return safe;
     }
 
     public Point getHead() {
